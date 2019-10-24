@@ -1,0 +1,25 @@
+<div class="card" style="width: 18rem;">
+
+  <% @furries.each do |furry| %>
+    <% if furry.image.attached? %>
+      <%= image_tag url_for(furry.image) %>
+
+      <div class="card-body">
+        Name: <h5 class="card-title"><%= furry.name %> </h5>
+        Specie: <h5 class="card-title"><%= furry.specie %> </h5>
+
+        <%= button_to "Edit me!", edit_furry_path(furry), method: :get%>
+      </div>
+      
+    <% else %>
+
+      <div class="card-body">
+        Name: <h5 class="card-title"><%= furry.name %> </h5>
+        Specie: <h5 class="card-title"><%= furry.specie %> </h5>
+
+        <%= button_to "Edit me!", edit_furry_path(furry), method: :get%>
+      </div>
+      
+    <% end %>
+  <% end %>
+</div>

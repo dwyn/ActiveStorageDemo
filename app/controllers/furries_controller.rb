@@ -1,7 +1,6 @@
 class FurriesController < ApplicationController
   def index
-    # very simple code to grab all posts so they can be
-    # displayed in the Index view (index.html.erb)
+    @furries = Furry.all
   end
 
   def show
@@ -10,28 +9,24 @@ class FurriesController < ApplicationController
   end
 
   def new
-    # very simple code to create an empty post and send the user
-    # to the New view for it (new.html.erb), which will have a
-    # form for creating the post
   end
 
   def create
-    # code to create a new post based on the parameters that
-    # were submitted with the form (and are now available in the
-    # params hash)
   end
 
   def edit
-    # very simple code to find the post we want and send the
-    # user to the Edit view for it(edit.html.erb), which has a
-    # form for editing the post
+    @furry = Furry.find(params[:id])
   end
 
   def update
-    # code to figure out which post we're trying to update, then
-    # actually update the attributes of that post.  Once that's
-    # done, redirect us to somewhere like the Show page for that
-    # post
+    @furry = Furry.find(params[:id])
+    @furry.update(furry_params)
+    if @furry.save
+      redirect_to root_path
+    else
+      render :edit
+    end
+
   end
 
   def destroy
@@ -41,6 +36,6 @@ class FurriesController < ApplicationController
 
   private
     def furry_params
-      params.require(:furry).permit(:name, :specie)
+      params.require(:furry).permit(:name, :specie, :image)
     end
 end

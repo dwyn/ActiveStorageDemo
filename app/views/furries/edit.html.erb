@@ -1,0 +1,25 @@
+ <div class="row" style="margin-top: 10px;"> </div>
+  <div style="  display: block; margin-right: auto; margin-left: auto; width: 50%" >
+    <h4 class="center"> Edit Furry! </h4><br>
+
+    <%= form_for @furry do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Furry Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :specie %>
+        <%= f.text_field :specie, placeholder: "Specie", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      </div>
+
+      <button type="submit" class="btn btn-md btn-primary btn-block">Update Furry!</button>
+    <% end %>
+  </h3>
+</div>
